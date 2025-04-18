@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import NewPlantForm from "./NewPlantForm";
 import PlantList from "./PlantList";
 import Search from "./Search";
+import PlantCard from "./PlantCard"; 
 
 function PlantPage() {
   const [plants, setPlants] = useState([]);
@@ -17,6 +18,17 @@ function PlantPage() {
     setPlants([...plants, newPlant]);
   }
 
+  function handleUpdatePlant(updatedPlant) {
+    setPlants((prevPlants) =>
+      prevPlants.map((plant) =>
+        plant.id === updatedPlant.id ? updatedPlant : plant
+      )
+    );
+  }
+  function handleDeletePlant(id) {
+    setPlants((prevPlants) => prevPlants.filter((plant) => plant.id !== id));
+  }
+
   function handleSearch(term) {
     setSearchTerm(term);
   }
@@ -30,7 +42,7 @@ function PlantPage() {
     <main>
       <NewPlantForm onAddPlant={handleAddPlant} />
       <Search onSearchChange={handleSearch} />
-      <PlantList plants={filteredPlants} />
+      <PlantList plants={filteredPlants} onUpdatePlant={handleUpdatePlant} onDeletePlant={handleDeletePlant} />  
     </main>
   );
 }
