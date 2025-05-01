@@ -9,7 +9,7 @@ function PlantPage() {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:6001/plants")
+    fetch("https://plantsy-server-api.onrender.com/plants")
       .then((res) => res.json())
       .then((data) => setPlants(data));
   }, []);

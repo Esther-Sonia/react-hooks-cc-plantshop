@@ -16,7 +16,7 @@ function PlantCard({ plant, onUpdatePlant, onDeletePlant }) {
   function handlePriceSubmit() {
     const updatedPlant = { ...plant, price: parseFloat(newPrice) };
    
-    fetch(`http://localhost:6001/plants/${id}`, {
+    fetch(`https://plantsy-server-api.onrender.com/plants/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -30,7 +30,7 @@ function PlantCard({ plant, onUpdatePlant, onDeletePlant }) {
     }
 
     function handleDelete() {
-      fetch(`http://localhost:6001/plants/${id}`, {
+      fetch(`https://plantsy-server-api.onrender.com/plants/${id}`, {
         method: "DELETE",
       }).then(() => {
         onDeletePlant(id); 
