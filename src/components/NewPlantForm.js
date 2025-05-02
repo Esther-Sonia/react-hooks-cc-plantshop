@@ -20,7 +20,7 @@ function NewPlantForm({onAddPlant}) {
       price: formData.price,
     };
 
-    fetch("https://plantsy-server-api.onrender.com/plants", {
+    fetch("http://localhost:6001/plants", {
       method: "POST",
       headers: {
         "Content-Type": "Application/JSON"
